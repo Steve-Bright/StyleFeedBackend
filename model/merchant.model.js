@@ -33,7 +33,7 @@ const merchantSchema = new mongoose.Schema({
         enum: ['shirts' , 'sneakers', 'pants', 'dresses', 'jackets', 'men', 'women']
     },
     shopLogo: {
-        type: [String]
+        type: String
     }
     // crn: {
     //     type: String,

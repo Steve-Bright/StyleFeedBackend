@@ -16,9 +16,9 @@ export const merchantRegister = async(req, res, next) => {
 
         const merchantEmail = await Merchant.findOne({email})
         
-        if(!email && !password){
-            return fError(res, "Where is the password? bitch ", 404)
-        }
+        // if(!email && !password){
+        //     return fError(res, "Where is the password?  ", 404)
+        // }
         
         if(merchantEmail){
             return fError(res, "Email already exists", 409)
@@ -34,7 +34,7 @@ export const merchantRegister = async(req, res, next) => {
         }
 
         const hashedPassword = encode(password)
-        console.log("this should work")
+        
         const newMerchant = await Merchant.create({
             email, password: hashedPassword, phoneNumber, shopName, shopLocation, website, productsCategories 
         })
