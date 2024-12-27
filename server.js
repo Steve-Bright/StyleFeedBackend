@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import mongoConnection from "./dbconnection/mongoConnect.js";
+import supbaseConnection from "./dbconnection/supbaseConnect.js"
 import authRoute from "./routes/auth.route.js";
 
 dotenv.config();
@@ -14,6 +15,9 @@ app.use(express.json());
 
 
 app.use("/api/auth", authRoute)
+app.get("/", (req, res) => {
+    res.send("Welcome to stylefeed backend server")
+})
  
 app.use((err, req, res, next) => {
     err.status = err.status || 505
@@ -22,5 +26,6 @@ app.use((err, req, res, next) => {
 
 app.listen(serverPort, () => {
     mongoConnection();
+    supbaseConnection;
     console.log("port : 42651")
 })
