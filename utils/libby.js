@@ -22,12 +22,12 @@ export const decode = (payload, hash) => {
     return bcrypt.compareSync(payload, hash);
 };
 
-// export const genToken = (payload) => {
-//     jwt.sign(
-//         {
-//             exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
-//             data: payload,
-//         },
-//         process.env.SECRET_KEY
-//     )
-// }
+export const genToken = (payload) => {
+    return jwt.sign(
+        {
+            exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
+            data: payload,
+        },
+        process.env.SECRET_KEY
+    )
+}

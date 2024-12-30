@@ -26,6 +26,5 @@ app.use((err, req, res, next) => {
 
 app.listen(serverPort, () => {
     mongoConnection();
-    supbaseConnection;
     console.log("port : 42651")
 })
