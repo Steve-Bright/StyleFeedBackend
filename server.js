@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import mongoConnection from "./dbconnection/mongoConnect.js";
 import supbaseConnection from "./dbconnection/supbaseConnect.js"
 import authRoute from "./routes/auth.route.js";
-import itemRoute from "./routes/item.route.js"
+import itemRoute from "./routes/product.route.js"
 
 dotenv.config();
 let serverPort = process.env.PORT;

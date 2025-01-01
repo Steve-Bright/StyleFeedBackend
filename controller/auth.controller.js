@@ -54,18 +54,18 @@ export const merchantLogin = async(req, res, next) => {
         const {email, password } = req.body;
 
         if(!email || !password){
-            return fError("Email and password are required")
+            return fError(res, "Email and password are required")
         }
 
         const merchant = await Merchant.findOne({email})
         if(!merchant){
-            return fError("Invalid credentials")
+            return fError(res, "Invalid credentials")
         }
 
         const isMatch = decode(password, merchant.password)
 
         if(!isMatch){
-            return fError("Invalid username or password")
+            return fError(res, "Invalid username or password")
         }
 
         const toEncrypt = {

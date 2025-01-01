@@ -10,7 +10,7 @@ const initializeSupabase = () => {
     const supabase = createClient(supabaseUrl, supabaseKey)
     const createBucketsIfNotExist = async () => {
         try {
-          const bucketsToCreate = ["profile-pictures", "item-pics"];
+          const bucketsToCreate = ["product_images"];
           for (const bucketName of bucketsToCreate) {
             const { data: buckets, error: listError } = await supabase.storage.listBuckets();
             if (listError) {

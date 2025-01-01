@@ -1,7 +1,21 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose"
 
-// Define the variation schema for size and color
-const variationSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    description: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    merchantId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Merchant",
+        required: true,
+    },
     size: {
         type: String,
         // enum: ['S', 'M', 'L', 'XL', 'XXL'], // Adjust as needed
@@ -38,26 +52,17 @@ const variationSchema = new mongoose.Schema({
     finalPrice: {
         required: true,
         type: Number
-    }
-});
-
-// Define the product schema
-const productSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true,
     },
-    description: {
-        type: String,
-        trim: true,
-    },
-    variations: [variationSchema], // Array of variations
     category: {
         type: [String],
         required: true,
         enum: ["clothes","mens_wear","women_wear","childs_wear", "sport_wear","shoes", "accessories"], // Adjust as needed
     },
+    variations: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "Variation",
+    }, 
+    
 
 });
 

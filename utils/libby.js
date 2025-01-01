@@ -31,3 +31,22 @@ export const genToken = (payload) => {
         process.env.SECRET_KEY
     )
 }
+
+export let validateToken = () => {
+    return async (req, res, next) => {
+      if (!req.headers.authorization) {
+        return next(new Error("Unauthorized"));
+      }
+  
+      let token = req.headers.authorization.split(" ")[1];
+
+      try {
+        const tokenUser = jwt.verify(token, process.env.SECRET_KEY);
+        req.user = tokenUser.data;
+  
+        next();
+      } catch (error) {
+        return next(new Error("Invalid token"));
+      }
+    };
+  };
