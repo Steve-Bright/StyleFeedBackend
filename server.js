@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import mongoConnection from "./dbconnection/mongoConnect.js";
 import supbaseConnection from "./dbconnection/supbaseConnect.js"
 import authRoute from "./routes/auth.route.js";
+import itemRoute from "./routes/item.route.js"
 
 dotenv.config();
 let serverPort = process.env.PORT;
@@ -15,9 +16,7 @@ app.use(express.json());
 
 
 app.use("/api/auth", authRoute)
-app.get("/", (req, res) => {
-    res.send("Welcome to stylefeed backend server")
-})
+app.use("/api/item", itemRoute)
  
 app.use((err, req, res, next) => {
     err.status = err.status || 505
