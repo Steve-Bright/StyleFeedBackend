@@ -1,4 +1,6 @@
-import initializeSupabase from "../dbconnection/supbaseConnect";
+import initializeSupabase from "../dbconnection/supbaseConnect.js";
+
+const supabase = initializeSupabase();
 
 export const uploadImageToSupabase = async (file, bucketName) => {
     if (!supabase) {
